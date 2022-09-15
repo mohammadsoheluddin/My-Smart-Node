@@ -11,23 +11,29 @@ app.get('/', (req, res) => {
 });
 
 const users = [
-    {id: 1, name: 'John', email: 'abc@gmail.com', phone: '123-456-00'},
-    {id: 2, name: 'shohel', email: 'sohel@gmail.com', phone: '123-456-00'},
-    {id: 3, name: 'Shoaib', email: 'karim@gmail.com', phone: '123-456-00'},
-    {id: 4, name: 'helal', email: 'helal@gmail.com', phone: '123-456-00'},
-    {id: 5, name: 'noor', email: 'noor@gmail.com', phone: '123-456-00'},
-    {id: 6, name: 'esha', email: 'esha@gmail.com', phone: '123-456-00'},
-    {id: 7, name: 'alif', email: 'alif@gmail.com', phone: '123-456-00'},
+    { id: 1, name: 'John', email: 'abc@gmail.com', phone: '123-456-00' },
+    { id: 2, name: 'shohel', email: 'sohel@gmail.com', phone: '123-456-00' },
+    { id: 3, name: 'Shoaib', email: 'karim@gmail.com', phone: '123-456-00' },
+    { id: 4, name: 'helal', email: 'helal@gmail.com', phone: '123-456-00' },
+    { id: 5, name: 'noor', email: 'noor@gmail.com', phone: '123-456-00' },
+    { id: 6, name: 'esha', email: 'esha@gmail.com', phone: '123-456-00' },
+    { id: 7, name: 'alif', email: 'alif@gmail.com', phone: '123-456-00' },
 ]
 
+// app.get('/users', (req, res) =>{
+//     res.send(users.)
+// })
+
+
+// filter by search query parameter
 app.get('/users', (req, res) => {
-    // filter by search query parameter
-    if(req.query.name){
+
+    if (req.query.name) {
         const search = req.query.name;
         const matched = users.filter(user => user.name.toLowerCase().includes(search))
         res.send(matched);
     }
-    else{
+    else {
         res.send(users);
     }
 });
@@ -47,6 +53,6 @@ app.post('/user', (req, res) => {
     res.send(user);
 })
 
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log('Listening to port', port);
 });
